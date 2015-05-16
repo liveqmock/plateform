@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 客户端资源版本配置 -->
+
+<!-- 20130918新增userconfirmlevel参数：表示这个更新是否需要客户端用户按确定才开始下载，0表示不需要、1表示wifi时不需要、2表示需要确认。
+	（默认是0不需要用户确认就直接下载更新，但部分SDK渠道是有规定的，所以这种渠道要单独分开一个Tag来做） -->
+
+<VersionControl>
+
+	<!-- 注：可以指定promoeid值为"default"来表示所有未指定的渠道 -->
+	<!-- 20130724每个文件增加md5校验码，发给客户端自己对比 -->
+	<compatible_md5_version>0.95</compatible_md5_version>
+
+	<!-- 应用版本控制,updateway_outside参数是20130714增加的通知客户端由系统系在，而不是在应用内下载，主要是防止客户端出现问题而采取的紧急处理
+		办法，平时一定是false，紧急情况才会设为true -->
+	<AppVersionControl updateway_outside="false">
+
+		<!-- 最新程序版本号（格式根据客户端来定，程序上市用字符串比对大小的方式判断是否需要更新） -->
+		<!-- 20130717改成在各渠道里面增加appver参数控制app版本号 -->
+		<!-- <AppVersion>1.0</AppVersion> -->
+
+		<ApkUpdateByPromoChannel promoid="1000"
+			userconfirmlevel="0" appver="1.0" filesize="111" md5="abc123">http://10.10.0.168/res/gres/a1.apk
+		</ApkUpdateByPromoChannel>
+
+		<!-- downjoy -->
+		<ApkUpdateByPromoChannel promoid="1001"
+			userconfirmlevel="0" appver="1.0" filesize="79210536" md5="abc123">http://res5.d.cn/ng/15/1215/20130715163748_TXB_dcn.apk
+		</ApkUpdateByPromoChannel>
+
+		<!-- uc -->
+		<ApkUpdateByPromoChannel promoid="1002"
+			userconfirmlevel="0" appver="1.0" filesize="80670429" md5="abc123">http://down5.game.uc.cn/t/4/4/AndroidTXB201307151310v0.95_48420_18372738353f.apk
+		</ApkUpdateByPromoChannel>
+
+		<!-- 91 -->
+		<ApkUpdateByPromoChannel promoid="1003"
+			userconfirmlevel="0" appver="1.0" filesize="81097593" md5="abc123"></ApkUpdateByPromoChannel>
+
+		<!-- 360 -->
+		<ApkUpdateByPromoChannel promoid="1004"
+			userconfirmlevel="0" appver="1.0" filesize="80516817" md5="abc123">http://m.shouji.360tpcdn.com/360sj/dev/20130716/com.kola.orochi.app.game360_1_173917.apk
+		</ApkUpdateByPromoChannel>
+
+		<!-- duokoo -->
+		<ApkUpdateByPromoChannel promoid="1007"
+			userconfirmlevel="0" appver="0.96" filesize="3747057"
+			md5="7e978f04d98c6dcd614d9950b2b7288b">http://10.10.0.168/res/gres/(Duoku)txb-release.apk
+		</ApkUpdateByPromoChannel>
+
+		<!-- sky -->
+		<ApkUpdateByPromoChannel promoid="1008"
+			userconfirmlevel="0" appver="0.96" filesize="3747057"
+			md5="7e978f04d98c6dcd614d9950b2b7288b">http://10.10.0.168/res/gres/(Duoku)txb-release.apk
+		</ApkUpdateByPromoChannel>
+		
+		<ApkUpdateByPromoChannel promoid="default"
+			userconfirmlevel="0" appver="0.96" filesize="3747057"
+			md5="7e978f04d98c6dcd614d9950b2b7288b">http://10.10.0.168/res/gres/(Duoku)txb-release.apk
+		</ApkUpdateByPromoChannel>
+
+	</AppVersionControl>
+
+
+	<!-- 资源版本控制，其中的ver参数必须为整型值 -->
+	<ResVersionControl>
+
+		<!-- userconfirmlevel参数表示这个更新是否需要客户端用户按确定才开始下载，0表示不需要、1表示wifi时不需要、2表示需要确认。
+			（默认是0不需要用户确认就直接下载更新资源和so，但部分SDK渠道是有规定的，所以这种渠道要单独分开一个Respacks来做） -->
+		<Respacks promoid="1000,1001,1002" userconfirmlevel="0">
+			<!-- 最新完整资源包 -->
+			<LastestFullRespack name="tmp.zip" ver="101"
+				filesize="9999999" md5="b034df7daa12c0d56b791fe3673a61df">http://10.10.0.168/res/gres/tmp.zip
+			</LastestFullRespack>
+			
+			<!-- MINI包中40级以后的资源大包，收到客户端带bigpkg参数为1时返回本段信息 -->
+			<Mini40Res name="b.zip" ver="0" bigpkg="true"
+				filesize="9999999" md5="b034df7daa12c0d56b791fe3673a61df">http://10.10.0.168/res/gres/tmp.zip
+			</Mini40Res>
+
+			<!-- 各版本资源增量包 -->
+			<Patch name="tmp2.zip" ver="100" filesize="4359278"
+				md5="3837d1c5f885a960493ea5803ea6f1db">http://10.10.0.168/res/gres/tmp2.zip</Patch>
+			<Patch name="tmp3.zip" ver="101" filesize="2077"
+				md5="37b828c76950add23055edc3ca9cc77c">http://10.10.0.168/res/gres/tmp3.zip</Patch>
+		</Respacks>
+		
+		<Respacks promoid="default" userconfirmlevel="0">
+			<!-- 最新完整资源包 -->
+			<LastestFullRespack name="tmp.zip" ver="1"
+				filesize="9999999" md5="b034df7daa12c0d56b791fe3673a61df">http://10.10.0.168/res/gres/tmp.zip
+			</LastestFullRespack>
+			
+			<!-- MINI包中40级以后的资源大包，收到客户端带bigpkg参数为1时返回本段信息 -->
+			<Mini40Res name="b.zip" ver="0" bigpkg="true"
+				filesize="9999999" md5="b034df7daa12c0d56b791fe3673a61df">http://10.10.0.168/res/gres/tmp.zip
+			</Mini40Res>
+
+			<!-- 各版本资源增量包 -->
+			<Patch name="tmp2.zip" ver="1" filesize="4359278"
+				md5="3837d1c5f885a960493ea5803ea6f1db">http://10.10.0.168/res/gres/tmp2.zip</Patch>
+			<Patch name="tmp3.zip" ver="1" filesize="2077"
+				md5="37b828c76950add23055edc3ca9cc77c">http://10.10.0.168/res/gres/tmp3.zip</Patch>
+		</Respacks>
+		
+
+	</ResVersionControl>
+
+	<!-- c/c++代码文件so的更新控制 -->
+	<SoVersionControl>
+		<!-- userconfirmlevel参数表示这个更新是否需要客户端用户按确定才开始下载，0表示不需要、1表示wifi时不需要、2表示需要确认。
+			（默认是0不需要用户确认就直接下载更新资源和so，但部分SDK渠道是有规定的，所以这种渠道要单独分开一个Sopacks来做） -->
+		<Sopacks promoid="1001" userconfirmlevel="0">
+			<LastestFullSopack name="a.so" ver="12" filesize="9999999"
+				md5="abc">http://10.10.0.168/res/gres/so.zip</LastestFullSopack>
+
+			<Patch name="so11.zip" ver="11" filesize="111"
+				md5="b034df7daa12c0d56b791fe3673a61df">http://10.10.0.168/res/gres/so11.zip</Patch>
+			<Patch name="so12.zip" ver="12" filesize="1653808"
+				md5="e7cc347b3aee426222fda41ee106b8c7">http://10.10.0.168/res/gres/so12.zip</Patch>
+		</Sopacks>
+		
+		<Sopacks promoid="default" userconfirmlevel="0">
+			<LastestFullSopack name="a.so" ver="1" filesize="9999999"
+				md5="abc">http://10.10.0.168/res/gres/so.zip</LastestFullSopack>
+
+			<Patch name="so11.zip" ver="1" filesize="111"
+				md5="b034df7daa12c0d56b791fe3673a61df">http://10.10.0.168/res/gres/so11.zip</Patch>
+			<Patch name="so12.zip" ver="1" filesize="1653808"
+				md5="e7cc347b3aee426222fda41ee106b8c7">http://10.10.0.168/res/gres/so12.zip</Patch>
+		</Sopacks>
+	</SoVersionControl>
+
+	<!-- FE列表，客户端先用http连到VS并获取到推荐的FE -->
+	<FEList>
+		<FE ip="10.10.0.188" port="8889">
+			<!-- 表示本FE所适用的渠道（可设'default'表示除指定渠道外的所有渠道） -->
+			<promoid>1001,1002</promoid>
+			<!-- 【20131121公测前增加的一个临时条件判断】
+				采用闭区间格式，例如
+				",1.1"     表示小于1.1的版本客户端;
+				"1.0,3.3"  表示1.0到3.3之间的版本客户端;
+				"2.2,"     表示大于2.2版本的客户端
+			-->
+			<apkver>,1.0</apkver>
+		</FE>
+		<FE ip="10.10.0.188" port="8887">
+			<!-- 表示本FE所适用的渠道（可设'default'表示除指定渠道外的所有渠道） -->
+			<promoid>default</promoid>
+			<!-- 【20131121公测前增加的一个临时条件判断】
+				采用闭区间格式，例如
+				",1.1"     表示小于1.1的版本客户端;
+				"1.0,3.3"  表示1.0到3.3之间的版本客户端;
+				"2.2,"     表示大于2.2版本的客户端
+			-->
+			<apkver>1.1,</apkver>
+		</FE>
+	</FEList>
+	
+	<!-- 小包缺失资源的目录，包含所有单独资源文件，客户端发现缺失的时候会从此目录申请下载个别文件（随FE信息一起返回） -->
+	<MiniResDir>http://download.kl321.com/mini_res_201310281546</MiniResDir>
+
+	<!-- 以下是服务器一些配置信息 -->
+	<ServerConfig>
+		<!-- 消息处理线程池相关设定 -->
+		<ExecutionHandler corePoolSize="8"
+			maxChannelMemorySize="1024000" maxTotalMemorySize="2048000000"
+			keepAliveTimeMillis="10000" />
+		<!-- 定时器：这里暂时只是作为本xml的修改reload做检测 -->
+		<Timer corePoolSize="1" tickDuration="1000" ticksPerWheel="32">
+		</Timer>
+	</ServerConfig>
+
+</VersionControl>

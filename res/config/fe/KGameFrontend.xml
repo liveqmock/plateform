@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<KGameFrontend>
+
+	<!-- ######### Communication About Settings ######### -->
+	<Network>
+
+		<!-- Socket监听的端口 -->
+		<LanIP>10.10.0.21</LanIP>
+		<SocketPort>8887</SocketPort>
+		<Options>
+			<!-- 一些socket参数设置。（添加的"child."前缀。这意味着这个配置项仅适用于我们接收到的通道实例，而不是ServerSocketChannel实例） -->
+			<Option key="reuseAddress" value="true" />
+			<!-- <Option key="child.receiveBufferSize" value="1048576" /> -->
+			<Option key="child.tcpNoDelay" value="true" />
+			<Option key="child.keepAlive" value="true" />
+		</Options>
+
+		<AllowedConnect>2500</AllowedConnect>
+		<AllowedOnline>2000</AllowedOnline>
+
+		<!-- 消息处理线程池相关设定 -->
+		<ExecutionHandler corePoolSize="8"
+			maxChannelMemorySize="1024000" maxTotalMemorySize="2048000000"
+			keepAliveTimeMillis="10000" />
+
+		<!-- 客户端会话空闲相关设定 -->
+		<Idle readerIdleTimeSeconds="60" writerIdleTimeSeconds="60"
+			allIdleTimeSeconds="0">
+			<!-- 做一个时间间隔为10秒，一圈时间为10分钟的时间轮 -->
+			<WheelTimer tickDurationSeconds="10" ticksPerWheel="64" />
+			<!-- 1分钟允许最大的PING次数，超出将踢下线 -->
+			<AllowPingPerMin>15</AllowPingPerMin>
+		</Idle>
+
+	</Network>
+
+	<Monitor>
+		<!-- 网络通信统计 ，0或负数表示关闭 -->
+		<NetCount printIntervalSeconds="60"
+			writtenAmount2FileSeconds="3600" />
+	</Monitor>
+
+	<Timer corePoolSize="8" tickDuration="1000" ticksPerWheel="64">
+	</Timer>
+
+
+</KGameFrontend>

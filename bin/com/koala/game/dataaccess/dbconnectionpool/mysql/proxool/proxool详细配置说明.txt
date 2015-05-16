@@ -1,0 +1,15 @@
+jdbc-1.proxool.alias 数据库连接池别名 (这里注意各数据库连接池的别名必须区分开并清楚表示当前使用的是引擎层或者平台层等的库)
+jdbc-1.proxool.driver-url 数据库连接URL地址
+jdbc-1.proxool.driver-class 数据库连接驱动
+jdbc-1.user 访问数据库的用户名
+jdbc-1.password 访问数据库的用户密码
+jdbc-1.proxool.house-keeping-sleep-time 保留线程处于睡眠状态的最长时间,house keeper的职责就是检查各个连接的状态,并判断是否需要销毁或者创建.
+jdbc-1.proxool.house-keeping-test-sql 如果发现了空闲的数据库连接.house keeper 将会用这	 个语句来测试.这个语句最好非常快的被执行.如果没有定义,测试过程将会被忽略。
+jdbc-1.proxool.maximum-connection-count 最大的数据库连接数
+jdbc-1.proxool.minimum-connection-count 最小的数据库连接数
+jdbc-1.proxool.maximum-connection-lifetime 连接最大生命时间 默认4小时
+jdbc-1.proxool.simultaneous-build-throttle 同时最大连接数
+jdbc-1.proxool.recently-started-threshold 已开始在此值(毫秒)内,或者有一些多余的可用连接,那么我们假设连接池是开启的。默认为60秒
+ 这可以帮助我们确定连接池的状态,连接数少还是多或超载。只要至少有一个连接
+jdbc-1.proxool.maximum-active-time 如果housekeeper 检测到某个线程的活动时间大于这	 个数值.它将会杀掉这个线程.默认是5分钟.
+jdbc-1.proxool.prototype-count 连接池中可用的连接数量.如果当前的连接池中的连接少于 这个数值.新的连接将被建立(假设没有超过最大可用数).

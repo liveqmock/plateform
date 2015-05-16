@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+	<!-- default，如果key为null或0长度，那返回的一律都是0长度字符串 -->
+	<tips key=""></tips>
+	
+	<!-- 版本更新相关 -->
+	<tips key="PL_VERCHECK_NEWEST">恭喜，您的版本已是最新！\(^o^)/~</tips>
+	<tips key="PL_VERCHECK_UPDATE_RESPACKS">為了讓您獲得更好的遊戲體驗，現為你更新部分資源...</tips>
+	<tips key="PL_VERCHECK_UPDATE_APK">為了讓您獲得更好的遊戲體驗，現為你將用戶端更新到最新版本...</tips>
+	<tips key="PL_VERCHECK_NOTFOUND">更新出錯：找不到對應的更新包。請聯繫客服：020-85576603</tips>
+	<tips key="PL_VERCHECK_PARAM_ERROR">更新出錯：用戶端請求參數錯誤。請聯繫客服：020-85576603</tips>
+
+	<!-- 服务器公共提示 -->
+	<tips key="login_safe_warning">該帳號於{}在{}上登入遊戲，請核實並確保帳號安全！</tips><!-- {}為日期，{}為機型名稱 -->
+	<tips key="CAUSE_PLAYEROUT_OVERLAP">您的帳號在另一設備登入，您被迫下線。若非本人操作您的密碼有可能已經洩露，建議你儘快修改密碼。</tips>
+	<tips key="PL_ILLEGAL_SESSION_OR_MSG">無法識別的用戶端或消息\r\n（如果已經是第二次出現請退出程式重新進入，依然出現則需要重新下載官方用戶端，抱歉！）</tips>
+	<tips key="PL_UNKNOWNEXCEPTION_OR_SERVERBUSY">非常抱歉！伺服器繁忙，麻煩重新嘗試。</tips>
+	<tips key="NAMENOTEXIST">用戶名不存在。</tips>
+	<tips key="PASSWORDISWRONG">密碼錯誤。</tips>
+
+	<!-- 账号注册相关提示 -->
+	<tips key="PL_REGISTER_FAILED_DUPLICATIONOFNAME">註冊失敗，用戶名已被使用。</tips>
+	<tips key="PL_REGISTER_FAILED_UN_INVALID_LENGTH">用戶名長度不合法，請使用4~16位元的字母、數位（可組合）作為用戶名。</tips>
+	<tips key="PL_REGISTER_FAILED_PASSWORD_INVALID">密碼不合法，請使用6~18位元字母、數位、底線（可組合）作為密碼。</tips>
+	<tips key="PL_REGISTER_FAILED_MOBILE_INVALID">手機號碼不合法</tips>
+
+	<!-- 密码服务，取回或更改密码 -->
+	<tips key="PL_CHANGE_PASSWORD_FAILED_NEWPASSWORDINVALID">新密碼不合法，請使用6~18位元字母、數位、底線（可組合）作為密碼。</tips>
+	<tips key="PL_FORGET_PASSWORD_FAILED_UNMATCHED">您所提供的取回密碼的資訊不吻合。</tips>
+	<tips key="PL_CHANGE_PASSWORD_SUCCEED">密碼修改成功！</tips>
+	<tips key="PL_FORGET_PASSWORD_SUCCEED">密碼取回成功，您的密碼是{}</tips>
+	
+	<tips key="PL_SELECT_GS_FAILED_REJECTED">您所選遊戲服不存在，請選擇另外的遊戲服進入</tips>
+	<tips key="PL_SELECT_GS_FAILED_UNOPENED">噢噢！您所選遊戲服正在維護中，可先暫時選擇另外的服進行遊戲</tips>
+	<tips key="PL_SELECT_GS_FAILED_OPENSOON">您所選的遊戲服還沒開放哦（具體開放時間看列表中的說明），可暫時選擇另外的服進行遊戲</tips>
+	<tips key="PL_SELECT_GS_FAILED_QUEUE">您所選遊戲服已爆滿，需要排隊等候，謝謝</tips>
+	<tips key="PL_SELECT_GS_FULL">您所選擇的伺服器已經爆滿，請您選擇其他伺服器進行遊戲，感謝您的支持！</tips>
+	
+	<!-- 服务器关闭时断开已连接客户端的提示语【如果为""表示不作提示】 -->
+	<tips key="ShutdownNotice">伺服器已停機進行維護，請您稍候再嘗試登錄，謝謝！</tips>
+	
+	<!-- GM相关 -->
+	<tips key="BAN">您好，由於您違反遊戲規定，帳號已被封停，解封時間為：{}。若有疑問請聯繫客服：020-85576603</tips><!-- {}表示解封时间 -->
+	<tips key="GAG">您好，由於您在遊戲聊天中違反規定，已被禁言處理，解禁時間為：{}。若有疑問請聯繫客服：020-85576603</tips>
+	
+	<tips key="CHEAT">系統檢測到您使用了非官方用戶端或外掛！請尊重遊戲，那樣才能玩得開心，謝謝。</tips>
+	
+	
+	<tips key="PL_PAY_BEFORE_FAILED_PROMONOSUPPORT">糟糕！儲值功能出錯了！我們儘快恢復，請稍後再試試。（方便的話報告給GM，謝謝！錯誤資訊：{},{}）</tips><!-- promoid,code -->
+	<tips key="PL_PASSPORT_VERIFY_FAILED_PROMOCHANNELPARAMSWRONG">糟糕！登入伺服器出了點錯，請稍後再試試。（方便的話報告給GM，謝謝！錯誤資訊：{},{}）</tips><!-- promoid,code -->
+	<tips key="PL_PASSPORT_VERIFY_FAILED_PROMOCHANNELSERVERERROR">糟糕！登入伺服器出了點錯，請稍後再試試。（方便的話報告給GM，謝謝！錯誤資訊：{},{}）</tips><!-- promoid,code -->
+	<tips key="PL_PASSPORT_VERIFY_FAILED_PROMOCHANNELNOTFOUND">不好意思！登入伺服器剛好在維護，請稍後再試試。（方便的話報告給GM，謝謝！錯誤資訊：{},{}）</tips><!-- promoid,code -->
+</root>

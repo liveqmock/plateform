@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration debug="false" scan="true" scanPeriod="20 seconds">
+	<!-- 等级及继承：ALL、TRACE、DEBUG、INFO、WARN、ERROR、OFF -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned by default the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+		<encoder>
+			<pattern>%d{MMdd HH:mm:ss.SSS} [%thread] %-5level %logger{36}[%file:%line] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="STDOUT_ERROR" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned by default the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+		<encoder>
+			<pattern>%d{MMdd HH:mm:ss.SSS} [%thread] %-5level %logger{36}[%file:%line] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="STDOUT_WARN" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned by default the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>WARN</level>
+		</filter>
+		<encoder>
+			<pattern>%d{MMdd HH:mm:ss.SSS} [%thread] %-5level %logger{36}[%file:%line] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="STDOUT_DEBUG" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned by default the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>DEBUG</level>
+		</filter>
+		<encoder>
+			<pattern>%d{MMdd HH:mm:ss.SSS} [%thread] %-5level %logger{36}[%file:%line] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 保存日志的基本路径 -->
+	<property name="LOG_HOME" value="./-logdataLocal-" />
+
+	<!-- 保存日志的周期及文件命名规则 yy:MM:dd HH:mm:ss.SSS -->
+	<property name="LOG_PERIOD" value="yyMMdd" />
+	<!-- 保存日志的周期数，即保留多少个周期的日志 -->
+	<property name="LOG_KEEP" value="48" />
+	<!-- 保存日志的单个周期内，按大小分文件，单位支持bytes,KB,MB,GB -->
+	<property name="LOG_KEEP_MAXSIZE" value="10MB" />
+	<!-- 保存日志的后缀名，.zip可以控制是否压缩 -->
+	<!-- 客户端的滚动日志，统一后缀名与服务器端不同，以免直接拷贝粘贴产生文件名称冲突 -->
+	<property name="LOG_ROLL_POSTFIX" value="log.zip" />
+	<!-- 客户端的当前日志，统一后缀名与服务器端不同，以免直接拷贝粘贴产生文件名称冲突 -->
+	<property name="LOG_POSTFIX" value="log" />
+
+
+	<appender name="appender-file-error"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/gameError.${LOG_POSTFIX}</file>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+		<!-- 滚动策略:基于时间的滚动策略（此策略既定义滚动方式，又同时定义滚动条件） -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/gameError/gameError_%d{${LOG_PERIOD}}_%i.${LOG_ROLL_POSTFIX}
+			</fileNamePattern>
+			<!-- 滚动条件:按文件大小 -->
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- 文件的大小设置，单位支持bytes,KB,MB,GB -->
+				<maxFileSize>${LOG_KEEP_MAXSIZE}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>${LOG_KEEP}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<ImmediateFlush>true</ImmediateFlush>
+			<pattern>%d{MMdd HH:mm:ss.SSS} [%thread] %-5level %logger{36}[%file:%line] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="appender-file-comkoalagame"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/com.koala.game.${LOG_POSTFIX}</file>
+		<!-- 滚动策略:基于时间的滚动策略（此策略既定义滚动方式，又同时定义滚动条件） -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/comkoalagame/com.koala.game_%d{${LOG_PERIOD}}_%i.${LOG_ROLL_POSTFIX}
+			</fileNamePattern>
+			<!-- 滚动条件:按文件大小 -->
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- 文件的大小设置，单位支持bytes,KB,MB,GB -->
+				<maxFileSize>${LOG_KEEP_MAXSIZE}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>${LOG_KEEP}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<ImmediateFlush>true</ImmediateFlush>
+			<pattern>%d{MMdd HH:mm:ss.SSS} [%thread] %-5level %logger{36}[%file:%line] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="appender-file-comkoalapaymentserver"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/com.koala.paymentserver.${LOG_POSTFIX}</file>
+		<!-- 滚动策略:基于时间的滚动策略（此策略既定义滚动方式，又同时定义滚动条件） -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/comkoalapaymentserver/com.koala.paymentserver_%d{${LOG_PERIOD}}_%i.${LOG_ROLL_POSTFIX}
+			</fileNamePattern>
+			<!-- 滚动条件:按文件大小 -->
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- 文件的大小设置，单位支持bytes,KB,MB,GB -->
+				<maxFileSize>${LOG_KEEP_MAXSIZE}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>${LOG_KEEP}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<ImmediateFlush>true</ImmediateFlush>
+			<pattern>%d{MMdd HH:mm:ss.SSS} [%thread] %-5level %logger{36}[%file:%line] - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="appender-file-comkoalapromosupport"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/com.koala.promosupport.${LOG_POSTFIX}</file>
+		<!-- 滚动策略:基于时间的滚动策略（此策略既定义滚动方式，又同时定义滚动条件） -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/comkoalapromosupport/com.koala.promosupport_%d{${LOG_PERIOD}}_%i.${LOG_ROLL_POSTFIX}
+			</fileNamePattern>
+			<!-- 滚动条件:按文件大小 -->
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- 文件的大小设置，单位支持bytes,KB,MB,GB -->
+				<maxFileSize>${LOG_KEEP_MAXSIZE}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>${LOG_KEEP}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<ImmediateFlush>true</ImmediateFlush>
+			<pattern>%d{MMdd HH:mm:ss.SSS} [%thread] %-5level %logger{36}[%file:%line] - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="appender-file-other" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/other.${LOG_POSTFIX}</file>
+		<!-- 滚动策略:基于时间的滚动策略（此策略既定义滚动方式，又同时定义滚动条件） -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/other/other_%d{${LOG_PERIOD}}_%i.${LOG_ROLL_POSTFIX}
+			</fileNamePattern>
+			<!-- 滚动条件:按文件大小 -->
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- 文件的大小设置，单位支持bytes,KB,MB,GB -->
+				<maxFileSize>${LOG_KEEP_MAXSIZE}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>${LOG_KEEP}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<ImmediateFlush>true</ImmediateFlush>
+			<pattern>%d{MMdd HH:mm:ss.SSS} [%thread] %-5level %logger{36}[%file:%line] - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- 调试配置【控制台输出ERROR级别以上的信息，文件输出INFO级别以上的信息】 -->
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="appender-file-error" />
+		<appender-ref ref="appender-file-other" />
+	</root>
+
+	<logger name="com.koala.game" level="INFO" additivity="false">
+		<!-- <appender-ref ref="STDOUT_WARN" />  -->
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="appender-file-error" />
+		<appender-ref ref="appender-file-comkoalagame" />
+	</logger>
+	<logger name="com.koala.paymentserver" level="INFO" additivity="false">
+		<!-- <appender-ref ref="STDOUT_WARN" />  -->
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="appender-file-error" />
+		<appender-ref ref="appender-file-comkoalapaymentserver" />
+	</logger>
+	<logger name="com.koala.promosupport" level="INFO" additivity="false">
+		<!-- <appender-ref ref="STDOUT_WARN" />  -->
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="appender-file-error" />
+		<appender-ref ref="appender-file-comkoalapromosupport" />
+	</logger>
+
+</configuration>
+
+<!-- 加VM启动参数 -->
+<!-- -Dlogback.configurationFile=res/config/logger/logback.xml -->

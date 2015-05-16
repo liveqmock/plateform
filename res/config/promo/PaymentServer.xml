@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PaymentServer>
+
+	<!-- 【重要】http服务器端口 -->
+	<HttpPort>8080</HttpPort>
+
+	<!-- 消息处理线程池相关设定,1M,2G -->
+	<ExecutionHandler corePoolSize="8"
+		maxChannelMemorySize="1024000" maxTotalMemorySize="2048000000"
+		keepAliveTimeMillis="10000" />
+
+	<!-- 定时器参数 -->
+	<Timer corePoolSize="2" tickDuration="1000" ticksPerWheel="32">
+	</Timer>
+
+	<!-- PS跟各GS的PING时间间隔，单位：秒 -->
+	<PingIntervalSeconds>20</PingIntervalSeconds>
+
+	<!-- 支付订单缓存保留时长（保存的目的主要是因为SDK服务器有可能对我们支付服务器发出重复的订单callback导致重复发货）。 停机时会保留到一个临时文件开机再读取回来；默认可设12小时= -->
+	<PayOrderCachedTimeSeconds>43200</PayOrderCachedTimeSeconds>
+
+	<!-- 停服的指令密匙 -->
+	<ShutdownCode>16c288adbbbae89d02d61fed2e26bb36</ShutdownCode>
+
+	<!-- 停服的时候会把未达到缓存时长的订单写到临时文件前缀，开服的时候再读取出来 -->
+	<TempFileRecordCachedPayOrders>res/TempFileRecordCachedPayOrders_
+	</TempFileRecordCachedPayOrders>
+
+	<!-- 游戏服务器GS列表，主要是IP端口和账号。 Payment服务器会在启动时连接到各个GS；如果GS重启或连接不存在，Payment服务器会在第1个渠道请求时连接到对应的GS -->
+	<!-- 【动态更新】本列表可以动态更新，只要XML有改动即在X时间内自动重新加载。可以添加或提前加好所有GS然后通过open参数来控制，
+	                不能动态去除GS，只能设置open来实现关闭某GS的充值功能（一般很少这样用，因为临时关闭GS的话不需要理会这里，除非是长时间不用） -->
+	<GsList modifyCheckSeconds="60">
+		<GS ip="10.10.0.188" port="8888" open="true" />
+		<GS ip="10.10.0.188" port="8889" open="false" />
+	</GsList>
+
+</PaymentServer>

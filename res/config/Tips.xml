@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+	<!-- default，如果key为null或0长度，那返回的一律都是0长度字符串 -->
+	<tips key=""></tips>
+	
+	<!-- 版本更新相关 -->
+	<tips key="PL_VERCHECK_NEWEST">恭喜，您的版本已是最新！\(^o^)/~</tips>
+	<tips key="PL_VERCHECK_UPDATE_RESPACKS">为了让您获得更好的游戏体验，现为你更新部分资源...</tips>
+	<tips key="PL_VERCHECK_UPDATE_APK">为了让您获得更好的游戏体验，现为你将客户端更新到最新版本...</tips>
+	<tips key="PL_VERCHECK_NOTFOUND">更新出错：找不到对应的更新包。请联系客服：020-85576603</tips>
+	<tips key="PL_VERCHECK_PARAM_ERROR">更新出错：客户端请求参数错误。请联系客服：020-85576603</tips>
+
+	<!-- 服务器公共提示 -->
+	<tips key="login_safe_warning">该账号于{}在{}上登录游戏，请核实并确保帐号安全！</tips><!-- {}为日期，{}为机型名称 -->
+	<tips key="CAUSE_PLAYEROUT_OVERLAP">您的账号在另一设备登录，您被迫下线。若非本人操作您的密码有可能已经泄露，建议你尽快修改密码。</tips>
+	<tips key="PL_ILLEGAL_SESSION_OR_MSG">无法识别的客户端或消息\r\n（如果已经是第二次出现请退出程序重新进入，依然出现则需要重新下载官方客户端，抱歉！）</tips>
+	<tips key="PL_UNKNOWNEXCEPTION_OR_SERVERBUSY">非常抱歉！服务器繁忙，麻烦重新尝试。</tips>
+	<tips key="NAMENOTEXIST">用户名不存在。</tips>
+	<tips key="PASSWORDISWRONG">密码错误。</tips>
+
+	<!-- 账号注册相关提示 -->
+	<tips key="PL_REGISTER_FAILED_DUPLICATIONOFNAME">注册失败，用户名已被使用。</tips>
+	<tips key="PL_REGISTER_FAILED_UN_INVALID_LENGTH">用户名长度不合法，请使用4~16位的字母、数字（可组合）作为用户名。</tips>
+	<tips key="PL_REGISTER_FAILED_PASSWORD_INVALID">密码不合法，请使用6~18位字母、数字、下划线（可组合）作为密码。</tips>
+	<tips key="PL_REGISTER_FAILED_MOBILE_INVALID">手机号码不合法</tips>
+
+	<!-- 密码服务，取回或更改密码 -->
+	<tips key="PL_CHANGE_PASSWORD_FAILED_NEWPASSWORDINVALID">新密码不合法，请使用6~18位字母、数字、下划线（可组合）作为密码。</tips>
+	<tips key="PL_FORGET_PASSWORD_FAILED_UNMATCHED">您所提供的取回密码的信息不吻合。</tips>
+	<tips key="PL_CHANGE_PASSWORD_SUCCEED">密码修改成功！</tips>
+	<tips key="PL_FORGET_PASSWORD_SUCCEED">密码取回成功，您的密码是{}</tips>
+	
+	<tips key="PL_SELECT_GS_FAILED_REJECTED">您所选游戏服不存在，请选择另外的游戏服进入</tips>
+	<tips key="PL_SELECT_GS_FAILED_UNOPENED">噢噢！您所选游戏服正在维护中，可先暂时选择另外的服进行游戏</tips>
+	<tips key="PL_SELECT_GS_FAILED_OPENSOON">您所选的游戏服还没开放哦（具体开放时间看列表中的说明），可暂时选择另外的服进行游戏</tips>
+	<tips key="PL_SELECT_GS_FAILED_QUEUE">您所选游戏服已爆满，需要排队等候，谢谢</tips>
+	<tips key="PL_SELECT_GS_FULL">您所选的游戏服已经爆满，请您选择别的游戏服进行游戏，感谢您的支持！</tips>
+	
+	<!-- 服务器关闭时断开已连接客户端的提示语【如果为""表示不作提示】 -->
+	<tips key="ShutdownNotice">服务器已停机进行维护，请稍后重新登陆！</tips>
+	
+	<!-- GM相关 -->
+	<tips key="BAN">您好，由于您违反游戏规定，账号已被封停，解封时间为：{}。若有疑问请联系客服：020-85576603</tips><!-- {}表示解封时间 -->
+	<tips key="GAG">您好，由于您在游戏聊天中违反规定，已被禁言处理，解禁时间为：{}。若有疑问请联系客服：020-85576603</tips>
+	
+	<tips key="CHEAT">系统检测到您使用了非官方客户端或外挂！请尊重游戏，那样才能玩得开心，谢谢。</tips>
+	
+	
+	<tips key="PL_PAY_BEFORE_FAILED_PROMONOSUPPORT">糟糕！充值功能出错了！我们尽快恢复，请稍后再试试。（方便的话报告给GM，谢谢！错误信息：{},{}）</tips><!-- promoid,code -->
+	<tips key="PL_PASSPORT_VERIFY_FAILED_PROMOCHANNELPARAMSWRONG">糟糕！登录服务器出了点错，请稍后再试试。（方便的话报告给GM，谢谢！错误信息：{},{}）</tips><!-- promoid,code -->
+	<tips key="PL_PASSPORT_VERIFY_FAILED_PROMOCHANNELSERVERERROR">糟糕！登录服务器出了点错，请稍后再试试。（方便的话报告给GM，谢谢！错误信息：{},{}）</tips><!-- promoid,code -->
+	<tips key="PL_PASSPORT_VERIFY_FAILED_PROMOCHANNELNOTFOUND">不好意思！登录服务器刚好在维护，请稍后再试试。（方便的话报告给GM，谢谢！错误信息：{},{}）</tips><!-- promoid,code -->
+</root>

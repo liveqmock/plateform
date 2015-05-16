@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 注意：要支持渠道下面分小渠道；要支持有SDK的渠道和没SDK的渠道。。。 -->
+
+<!-- 【子渠道ID规则】子渠道的ID = 父渠道ID*10000+N，（N取值区间0~9999） ，例如当乐子渠道就是10010000~10019999共支持10000个子渠道。[PS：父渠道ID一定是4位数内最小1000最大9999] -->
+
+<PromoChannels modifyCheckSeconds="30">
+
+	<!-- 我们的代币（元宝）价格，单位RMB分 -->
+	<YuanBaoPrice4RMBFen>10</YuanBaoPrice4RMBFen>
+
+	<!-- DEBUG模式，不检测签名 -->
+	<DebugPayNoSign>false</DebugPayNoSign>
+
+	<PromoChannel promoid="1000" description="kola self"
+		clazz="com.koala.promosupport.kola.KolaChannel" canlogin="true"
+		canpay="true" openpriceui="true">
+		<UserVerify url="" method="POST" clazz="com.koala.promosupport.kola.KolaUserVerify" />
+	</PromoChannel>
+	
+	<!-- =========================================================================== -->
+	<!-- canpay表示可以支付，安全保护防范某个支持通道出严重问题时可以关闭该渠道的支付，依赖canlogin，如果canlogin不为true那是不能pay的 -->
+	<PromoChannel promoid="20010001" description="xxwan"
+		clazz="com.koala.promosupport.xxwan.XXWanChannel" canlogin="true"
+		canpay="true" openpriceui="true"> <!-- 91助手 -->
+
+		<xx_game_id>115543</xx_game_id>
+		<appkey>0d6f9fc43f4952879357dc06a3f1c5d5</appkey>
+		<platformId>2</platformId>
+		
+		<UserVerify url=""
+			method="POST" clazz="com.koala.promosupport.xxwan.XXWanUserVerify" />
+
+		<!-- 支付/充值回调的地址（！基本渠道都不需要从这里获取的，而是在渠道方后台配置！） -->
+		<PayCallbackUrl>http://pay.kl321.com/2001</PayCallbackUrl>
+		<PayCallbackMethod>GET_POST</PayCallbackMethod>
+		<!-- 支付/充值发给客户端的参数KV，包括客户端发给SDK服务器的参数（有些value是变量故意留""的） -->
+		<PayCallbackParams2Client>
+			<param key="openpriceui" value="true" />
+			<param key="ext" value="" />
+			<param key="notifyUrl" value="http://pay.kl321.com/2001" />
+			<!-- serverId这里留空，程序会用对应GS的gsid作为value发给客户端 -->
+			<param key="serverId" value=""/>
+		</PayCallbackParams2Client>
+	</PromoChannel>
+	
+	<PromoChannel promoid="20010002" description="xxwan"
+		clazz="com.koala.promosupport.xxwan.XXWanChannel" canlogin="true"
+		canpay="true" openpriceui="true"> <!-- 快用 -->
+
+		<xx_game_id>115543</xx_game_id>
+		<appkey>0d6f9fc43f4952879357dc06a3f1c5d5</appkey>
+		<platformId>2</platformId>
+		
+		<UserVerify url=""
+			method="POST" clazz="com.koala.promosupport.xxwan.XXWanUserVerify" />
+
+		<!-- 支付/充值回调的地址（！基本渠道都不需要从这里获取的，而是在渠道方后台配置！） -->
+		<PayCallbackUrl>http://pay.kl321.com/2001</PayCallbackUrl>
+		<PayCallbackMethod>GET_POST</PayCallbackMethod>
+		<!-- 支付/充值发给客户端的参数KV，包括客户端发给SDK服务器的参数（有些value是变量故意留""的） -->
+		<PayCallbackParams2Client>
+			<param key="openpriceui" value="true" />
+			<param key="ext" value="" />
+			<param key="notifyUrl" value="http://pay.kl321.com/2001" />
+			<!-- serverId这里留空，程序会用对应GS的gsid作为value发给客户端 -->
+			<param key="serverId" value=""/>
+		</PayCallbackParams2Client>
+	</PromoChannel>
+	
+	<PromoChannel promoid="20010003" description="xxwan"
+		clazz="com.koala.promosupport.xxwan.XXWanChannel" canlogin="true"
+		canpay="true" openpriceui="true"> <!-- PP助手 -->
+
+		<xx_game_id>115543</xx_game_id>
+		<appkey>0d6f9fc43f4952879357dc06a3f1c5d5</appkey>
+		<platformId>2</platformId>
+		
+		<UserVerify url=""
+			method="POST" clazz="com.koala.promosupport.xxwan.XXWanUserVerify" />
+
+		<!-- 支付/充值回调的地址（！基本渠道都不需要从这里获取的，而是在渠道方后台配置！） -->
+		<PayCallbackUrl>http://pay.kl321.com/2001</PayCallbackUrl>
+		<PayCallbackMethod>GET_POST</PayCallbackMethod>
+		<!-- 支付/充值发给客户端的参数KV，包括客户端发给SDK服务器的参数（有些value是变量故意留""的） -->
+		<PayCallbackParams2Client>
+			<param key="openpriceui" value="true" />
+			<param key="ext" value="" />
+			<param key="notifyUrl" value="http://pay.kl321.com/2001" />
+			<!-- serverId这里留空，程序会用对应GS的gsid作为value发给客户端 -->
+			<param key="serverId" value=""/>
+		</PayCallbackParams2Client>
+	</PromoChannel>
+	
+	
+</PromoChannels>

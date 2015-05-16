@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<passports>
+  <passport pid="0" pname="abc0" pw="123456" />
+  <passport pid="1" pname="abc1" pw="123456" />
+</passports>
+

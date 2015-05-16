@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	Android推送协议：
+
+	1、客户端定期向服务器请求
+	http://ver.kl321.com:30000/push?p=0&pid=1001&product=txb&name=xxx&sign=aejf32423jdsijfafaj
+
+	p:平台号，0：Android，1：ios
+	pid:渠道号
+	product:产品名称，例如：txb
+	name:角色名称
+	sign:MD5加密字符串（和更新一样的加密策略：&key=kola）
+-->
+
+<Push>
+
+	<PushResult promoid="default" open="true">
+		<!-- 推送的文本信息，将会显示在Android手机的消息栏，如果为空，则不显示 -->
+		<title>好久不见</title>
+		<tips>亲，好久没登录游戏了，快来玩吧！</tips>
+		<!-- 下一次请求的时间间隔，默认一天（毫秒），如果为0，则永远关闭 -->
+		<Interval>60000</Interval>
+		<!-- 重新指定下一次请求的地址，如果没有则为空 -->
+		<newURL></newURL>
+	</PushResult>
+
+</Push>

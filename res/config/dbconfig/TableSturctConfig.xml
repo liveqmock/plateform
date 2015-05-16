@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : TableSturctConfig.xml
+    Created on : 2012年9月24日, 下午4:54
+    Author     : zhaizl
+    Description:
+        Purpose of the document follows.
+-->
+<!-- NUM\STRING\DATETIME\-->
+<db name="kmp_engine_table" ip="10.10.0.34" port="9998" pool_size="32" connection_timeout="3000">
+    <table name="player_role" primary_key="role_id">
+       <field name="role_id" type="NUM"/>
+       <field name="role_name" type="STRING"/>
+       <field name="player_id" type="NUM"/>
+       <field name="type" type="NUM"/>
+       <field name="status" type="NUM"/>
+       <field name="system_type" type="NUM"/>
+       <field name="create_time" type="DATETIME"/>
+       <field name="last_join_game_time" type="DATETIME"/>
+       <field name="last_leave_game_time" type="DATETIME"/>
+       <field name="status_change_time" type="DATETIME"/>
+       <field name="join_game_count" type="NUM"/>
+       <field name="join_game_total_time" type="NUM"/>
+       <field name="attribute" type="STRING"/>
+       <Index fieldName="role_name" name="idx_player_role_role_name"/>
+       <Index fieldName="player_id" name="idx_player_role_player_id"/>
+    </table>
+    
+    <table name="player_role_ca_ext" primary_key="id">
+       <field name="id" type="NUM"/>
+       <field name="role_id" type="NUM"/>
+       <field name="type" type="NUM"/>
+       <field name="attribute" type="STRING"/>
+       <Index fieldName="role_id" name="idx_player_role_ca_ext_role_id"/>
+    </table>
+    
+    <table name="player_role_relationship" primary_key="relationship_id">
+       <field name="relationship_id" type="NUM"/>
+       <field name="role_id" type="NUM"/>
+       <field name="guest_id" type="NUM"/>
+       <field name="type" type="NUM"/>
+       <field name="attribute" type="STRING"/>
+       <Index fieldName="role_id" name="idx_player_role_relationship_role_id"/>
+    </table>
+    
+    <table name="item" primary_key="item_id">
+       <field name="item_id" type="NUM"/>
+       <field name="role_id" type="NUM"/>
+       <field name="code" type="STRING"/>
+       <field name="count" type="NUM"/>
+       <field name="attribute" type="STRING"/>
+       <field name="create_time" type="DATETIME"/>
+       <field name="UUID" type="STRING"/>
+       <Index fieldName="role_id" name="idx_item_role_id"/>
+    </table>
+    
+    <table name="pet" primary_key="pet_id">
+       <field name="pet_id" type="NUM"/>
+       <field name="role_id" type="NUM"/>
+       <field name="type" type="NUM"/>
+       <field name="attribute" type="STRING"/>
+       <field name="create_time" type="DATETIME"/>
+       <field name="UUID" type="STRING"/>
+       <Index fieldName="role_id" name="idx_pet_role_id"/>
+    </table>
+    
+    <table name="currency_account" primary_key="account_id">
+       <field name="account_id" type="NUM"/>
+       <field name="role_id" type="NUM"/>
+       <field name="type" type="NUM"/>
+       <field name="balance" type="NUM"/>
+       <field name="attribute" type="STRING"/>
+       <Index fieldName="role_id" name="idx_currency_account_role_id"/>
+    </table>
+    
+    <table name="skill" primary_key="skill_id">
+       <field name="skill_id" type="NUM"/>
+       <field name="role_id" type="NUM"/>
+       <field name="type" type="NUM"/>
+       <field name="attribute" type="STRING"/>
+       <Index fieldName="role_id" name="idx_skill_role_id"/>
+    </table>
+    
+    <table name="mail" primary_key="mail_id">
+       <field name="mail_id" type="NUM"/>
+       <field name="role_id" type="NUM"/>
+       <field name="sender_id" type="NUM"/>
+       <field name="send_time" type="DATETIME"/>
+       <field name="type" type="NUM"/>
+       <field name="isread" type="NUM"/>
+       <field name="attribute" type="STRING"/>
+       <Index fieldName="role_id" name="idx_mail_role_id"/>
+    </table>
+    
+    <table name="mission" primary_key="mission_id">
+       <field name="mission_id" type="NUM"/>
+       <field name="role_id" type="NUM"/>
+       <field name="type" type="NUM"/>
+       <field name="attribute" type="STRING"/>
+       <Index fieldName="role_id" name="idx_mission_role_id"/>
+    </table>
+
+</db>

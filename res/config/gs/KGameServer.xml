@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 游戏服务器GS的配置，注意GSID要唯一，同时把ServerList.xml配置文件关联着看 -->
+<!-- GSID作为各游戏区的标识，同时作为昆仑的大区ID； KUNLUN_PRODUCT_ID作为昆仑的产品ID-->
+<KGameServer GSID="1" KUNLUN_PRODUCT_ID="664">
+
+	<!-- ######### Communication About Settings ######### -->
+	<Network>
+
+		<!-- Socket监听的端口 -->
+		<WanIP>10.10.0.21</WanIP>
+		<LanIP>10.10.0.21</LanIP>
+		<SocketPort>8888</SocketPort>
+		<Options>
+			<!-- 一些socket参数设置。（添加的"child."前缀。这意味着这个配置项仅适用于我们接收到的通道实例，而不是ServerSocketChannel实例） -->
+			<Option key="reuseAddress" value="true" />
+			<!-- <Option key="child.receiveBufferSize" value="1048576" /> -->
+			<Option key="child.tcpNoDelay" value="true" />
+			<Option key="child.keepAlive" value="true" />
+		</Options>
+
+		<AllowedConnect>2500</AllowedConnect>
+		<AllowedOnline>2000</AllowedOnline>
+
+		<!-- 消息处理线程池相关设定 -->
+		<ExecutionHandler corePoolSize="8"
+			maxChannelMemorySize="1024000" maxTotalMemorySize="2048000000"
+			keepAliveTimeMillis="10000" />
+
+		<!-- 客户端会话空闲相关设定 -->
+		<Idle readerIdleTimeSeconds="60" writerIdleTimeSeconds="60"
+			allIdleTimeSeconds="0">
+			<!-- 做一个时间间隔为10秒，一圈时间为10分钟的时间轮 -->
+			<WheelTimer tickDurationSeconds="10" ticksPerWheel="64" />
+			<!-- 1分钟允许最大的PING次数，超出将踢下线 -->
+			<AllowPingPerMin>15</AllowPingPerMin>
+		</Idle>
+
+		<FrontendInfo>
+			<FeLanIP>10.10.0.21</FeLanIP>
+			<FeSocketPort>8887</FeSocketPort>
+			<StatusUpdateDurationSeconds>3</StatusUpdateDurationSeconds>
+		</FrontendInfo>
+		
+		<!-- 当出现idle、disconnect、unknown等断开连接原因时，服务器会延迟移除会话，这个时间就是延迟多久，如果是0的话，表示马上移除 -->
+		<delayRemoveSeconds>180</delayRemoveSeconds>
+
+	</Network>
+	
+	<compress>
+	    <!-- 需要自动压缩的消息长度，单位byte -->
+		<msgLengthForAutoCompress>5120</msgLengthForAutoCompress>
+		<!-- 自动压缩的类型 暂时只能是zip或base64 -->
+		<autoCompressType>zip</autoCompressType>
+	</compress>
+
+	<Monitor>
+		<!-- 网络通信统计 ，0或负数表示关闭 -->
+		<NetCount printIntervalSeconds="30"
+			writtenAmount2FileSeconds="600" />
+		<!-- 流水记录  s -->
+		<FlowRecord online="60" />
+	</Monitor>
+
+	<!-- ######### Modules About Settings ######### -->
+	<Modules>
+		<Module name="_ExampleGameLogicModule" clazz="com.koala.game.example._ExampleGameLogicModule"
+			isPlayerSessionListener="true">
+			<!-- 游戏逻辑自定义配置，将直接传递给KGameModule解析 -->
+			<ModuleSelfDefiningConfig>
+				<!-- TODO 游戏逻辑可以在这里定义符合XML语法的一切内容 -->
+
+			</ModuleSelfDefiningConfig>
+		</Module>
+	</Modules>
+
+	<PaySupport>
+		<KGamePaymentListener clazz="com.koala.kgamelogic.currency.KPaymentListener"/>
+	</PaySupport>
+
+
+	<!-- ######### Game About Settings ######### -->
+	<Game>
+		<NCachedObject>10000</NCachedObject>
+
+		<!-- time base task settings.TimeUnit="MILLISECONDS",'handler' is optional -->
+		<Timer corePoolSize="8" tickDuration="1000" ticksPerWheel="64">
+			<handler clazz="com.koala.game.example._ExampleTimerHandler">
+				<!-- 注：以下内容前提条件是上面的‘handler’参数有效 -->
+				<!-- 如果希望把一些固定任务写在配置文件上，可写在下面，当服务器启动后引擎底层将通过KGameTimerHandler传递给使用者。 
+					下面的参数都可以自定义，因为最终是交给使用者解析并提交KGameTimer执行 -->
+				<!--example: <TimerTask name="taskName" clazz="xx.xx.xxx" firstExecuteTime="20120928200000"></TimerTask> -->
+			</handler>
+
+			<!-- 可以设多个handler组 -->
+		</Timer>
+
+		<!-- <ShutdownNotice>服务器已关闭，按确定回到服务器列表界面</ShutdownNotice> -->
+
+	</Game>
+	<!-- ######### 逻辑数据库访问方式 ，填写0为handlersocket模式，填写1为mysql模式 ######### -->
+	<logicDbMode>0</logicDbMode>
+
+	<Logging>
+		<Level>DEBUG</Level>
+	</Logging>
+
+</KGameServer>

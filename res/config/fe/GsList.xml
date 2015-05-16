@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 放在FE的服务器列表配置文件 -->
+
+<!-- 本文件会被FE服务器定时检查，如果有更新将自动被重新加载.. -->
+
+<GsList>
+
+	<!-- 自检测时间间隔s -->
+	<ModifyCheckSeconds>30</ModifyCheckSeconds>
+
+	<!-- Zone代表一个游戏分区，其实只是客户端显示规则，跟物理分区无关；GS代表一个具体的游戏服务器 -->
+	<!-- 注意：Zone的id和GS的id都需要唯一，即使在不同的Zone；另外要注意跟KGameServer.xml中的GSID对应！！！ -->
+	<GSS>
+
+		<!-- GS的id越大表示越新 -->
+
+		<!-- status(byte): '-1'表示停服维护状态;'0'表示已经启动但未对外开放;'1'表示对外开放。 PS:只要客户端协商好可增加自定义状态值 -->
+		<!-- history(byte): ‘0’表示新区；‘1’普通老区；‘2’表示合区 。PS：可不断增加标记 -->
+		<!-- VisiblePromoChannel和InvisiblePromoChannel属于互斥条件，一个GS只可以设其中一个条件表示渠道的可见或不可见。'all'表示全部渠道；两个条件都没设默认是全部渠道可见 -->
+		<!-- VisiblePlayer和InvisiblePlayer属于互斥条件，一个GS只可以设其中一个条件，','表示全部玩家；两个条件都不设表示默认全部可见.(注：此项比白名单更高优先级，是服务器是否显示的设置)
+			语法格式：
+			,N  表示PlayerID小于或等于N的所有玩家;
+			N,M 表示PlayerID大于或等于N并小于或等于M的所有玩家;
+			N,  表示PlayerID大于或等于N的所有玩家;
+		-->
+
+		<GS id="222" label="特工队" remark="超级好玩新区啊！！！" allowedOnline="1000" history="0" status="1">
+
+			<!-- 登录白名单，可关联多个，当status为0时，即GS已经开服但未对外开放 -->
+			<WhiteListLink>123</WhiteListLink>
+			<WhiteListLink>120</WhiteListLink>
+		</GS>
+		
+		<GS id="223" label="情报处" remark="超级好玩新区啊！！！" allowedOnline="1000" history="0" status="1">
+
+			<!-- 登录白名单，可关联多个，当status为0时，即GS已经开服但未对外开放 -->
+			<WhiteListLink>123</WhiteListLink>
+			<WhiteListLink>120</WhiteListLink>
+		</GS>
+	</GSS>
+
+	<Zones>
+	    <!-- 有角色的服务器列表，这里不应该有任何的服务器，由程序动态生成并填充数据  -->
+	    <Zone id="-1" label="我的">
+	    </Zone>
+		<!-- 推荐服大区必须id为0，否则在登录时选取的"推荐"为第1个Zone中的GS -->
+		<Zone id="0" label="推荐">
+			<GSLink id="222" showlabel="" />
+		</Zone>
+		<Zone id="1" label="一区">
+			<GSLink id="222" showlabel="" /><!-- 如果有showlabel表示在客户端显示的时候用这个值替换GS原有label -->
+			<GSLink id="223" showlabel="" />
+		</Zone>
+	</Zones>
+
+	<!-- 白名单定义 -->
+	<WhiteLists>
+		<!-- 可通过账号名或账号ID来定义 -->
+		<WhiteList id="123">
+			<PID>23432412</PID>
+			<PName>a5bc</PName>
+			<PID>2234</PID>
+			<PID>2343412</PID>
+			<PName>asdf</PName>
+			<PName>asdfas</PName>
+			<PName>abwrewrc</PName>
+			<PName>dsf</PName>
+			<PName>dfgg</PName>
+			<PName>aewrbc</PName>
+			<PName>momoko</PName>
+		</WhiteList>
+		<WhiteList id="120">
+			<PID>23432412</PID>
+			<PName>a5bc</PName>
+			<PID>2234</PID>
+			<PID>2343412</PID>
+			<PName>asdf</PName>
+			<PName>asdfas</PName>
+			<PName>abwrewrc</PName>
+			<PName>dsf</PName>
+			<PName>dfgg</PName>
+			<PName>aewrbc</PName>
+			<PName>momoko</PName>
+		</WhiteList>
+	</WhiteLists>
+
+	<!-- 服务器状态规则： 1、0~100在线显示：（良）[绿色表示] 2、101~500在线显示：（忙）[黄色标识] 3、501以上在线显示：（爆）[红色标识]
+		4、服务器维护显示（维护）[灰色标识]（注：维护状态服务器将不响应玩家操作） 5、新服将显示（新）[金色标识] -->
+	<StatusHeader>
+		<Header name="pause" status="-1" fontcolor="0xff9b9b9b">（维护）</Header>
+		<Header name="new" history="0" fontcolor="0xfffff600">（新）</Header>
+		<Header name="good" online="0~100" fontcolor="0xff00ac0c">（良）</Header>
+		<Header name="busy" online="101~500" fontcolor="0xfff6ff00">（忙）</Header>
+		<Header name="full" online="501~10000" fontcolor="0xffff0000">（爆）</Header>
+	</StatusHeader>
+	
+	<statusConfig>
+	    <status flag="-1" online="0,0" /> <!-- 维护 -->
+	    <status flag="0" online="0,0" /> <!-- 白名单可进 -->
+	    <status flag="1" online="0,0" /> <!-- 新服 -->
+	    <status flag="2" online="0,0" /> <!-- 推荐 -->
+	    <status flag="3" online="0,0" /> <!-- 开放 -->
+	    <status flag="4" online="0,100" /> <!-- 良好 -->
+	    <status flag="5" online="101,500" /> <!-- 繁忙 -->
+	    <status flag="6" online="501,1000" /> <!-- 火爆 -->
+	    <status flag="7" online="1001,2000" /> <!-- 满 -->
+	</statusConfig>
+
+</GsList>
